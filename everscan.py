@@ -3,7 +3,7 @@
 
 from modules.scanning import ScanningManager
 from modules.evernote import EvernoteManager
-from modules.gui import GuiManager
+from modules.interface import InterfaceManager
 
 class EverscanMaster:
     """
@@ -13,6 +13,6 @@ class EverscanMaster:
     """
     def __init__(self):
         # Initialize child manager objects.
-        self.m_scanning = ScanningManager(self)
-        self.m_evernote = EvernoteManager(self)
-        self.m_gui      = GuiManager(self)
+        self.m_scanning     = ScanningManager(self)
+        self.m_evernote     = EvernoteManager(self)
+        self.m_interface    = InterfaceManager(self)
