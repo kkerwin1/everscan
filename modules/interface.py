@@ -1,9 +1,9 @@
 # everscan/modules/interface.py
 
-from modules.ui.qt import QtUiManager
-from modules.ui.gtk import GtkUiManager
-from modules.ui.curses import CursesUiManager
-from modules.ui.uiErrors import UIInitializeError
+from modules.ui.qt          import QtUiManager
+from modules.ui.gtk         import GtkUiManager
+from modules.ui.curses      import CursesUiManager
+from modules.ui.uiErrors    import UIInitializeError
 
 import sys
 
