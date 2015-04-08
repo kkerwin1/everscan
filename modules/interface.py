@@ -1,8 +1,9 @@
 # everscan/modules/interface.py
 
-from ui.qt import QtUiManager
-from ui.gtk import GtkUiManager
-from ui.curses import CursesUiManager
+from modules.ui.qt import QtUiManager
+from modules.ui.gtk import GtkUiManager
+from modules.ui.curses import CursesUiManager
+from modules.ui.uiErrors import UIInitializeError
 
 import sys
 
@@ -19,6 +20,7 @@ class InterfaceManager:
         self.selectedUI = selectedUI
         
         # Qt UI is set as default for now.
+        # Qt UI will presently gracefully fail and terminate program execution.
         try:
             if self.selectedUI is "qt":
                 self.ui = QtUiManager(self)
@@ -28,9 +30,9 @@ class InterfaceManager:
                 self.ui = CursesUiManager(self)
             else:
                 self.ui = QtUiManager(self)
-        except ImportError:
+        except UIInitializeError:
             try:
                 self.ui = QtUiManager(self)
-            except ImportError:
+            except UIInitializeError:
                 print "Failed to initialize Qt UI. Terminating application."
                 sys.exit(1)
