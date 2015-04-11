@@ -2,9 +2,11 @@
 Scans paper documents directly into Evernote
 
 ## Dependencies
-### [pyinsane](https://github.com/jflesch/pyinsane/ "pyinsane")
+### [PyInsane](https://github.com/jflesch/pyinsane/ "pyinsane")
 Pure Python implementation of the Sane scanning API.
+
 To install:
+
 ```
 $ sudo pip install pyinsane
 ```
