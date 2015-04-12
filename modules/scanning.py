@@ -93,6 +93,23 @@ class ScanningManager:
         device = self.currentDevice
         device.options[optionName].value = constraint
     
+    def scanPage(self, scanSession):
+        """
+        Scan a single page.
+        
+        This functionality was originally in self.scan(). However, it was pulled
+        out and placed in its own function for the sake of code readability.
+        """
+        
+        try:
+            while True:
+                scanSession.scan.read()
+        # Finished getting page
+        except EOFError:
+            pass
+        
+        return scanSession
+    
     def scan(self):
         """
         Perform a scan.
@@ -104,13 +121,8 @@ class ScanningManager:
         # Flatbed scan
         if device.options["source"].value is not "ADF":
             scanSession = device.scan(multiple=False)
-            # Get one page
-            try:
-                while True:
-                    scanSession.scan.read()
-            # Finished getting one page
-            except EOFError:
-                pass
+            # Scan single page
+            scanSession = self.scanPage(scanSession)
             
         # ADF (Automatic Document Feeder) scan
         else:
@@ -118,13 +130,8 @@ class ScanningManager:
             # Get ALL pages
             try:
                 while True:
-                    # Get next page
-                    try:
-                        while True:
-                            scanSession.scan.read()
-                    # Finished getting next page
-                    except EOFError:
-                        pass
+                    # Scan single page
+                    scanSession = self.scanPage(scanSession)
             # Finished getting ALL pages
             except StopIteration:
                 pass
