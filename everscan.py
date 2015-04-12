@@ -1,9 +1,10 @@
 #!/usr/bin/python
 # everscan/everscan.py
 
-from modules.scanning import ScanningManager
-from modules.evernote import EvernoteManager
-from modules.interface import InterfaceManager
+from modules.scanning   import ScanningManager
+from modules.evernote   import EvernoteManager
+from modules.interface  import InterfaceManager
+from modules.imaging    import ImagingManager
 
 class EverscanMaster:
     """
@@ -16,3 +17,4 @@ class EverscanMaster:
         self.m_scanning     = ScanningManager(self)
         self.m_evernote     = EvernoteManager(self)
         self.m_interface    = InterfaceManager(self)
+        self.m_imaging      = ImagingManager(self)

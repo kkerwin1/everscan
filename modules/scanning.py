@@ -140,5 +140,6 @@ class ScanningManager:
         try:
             assert len(scanSession.images) > 0
             self.m_imaging.addImages(scanSession.images)
+        # We presumed wrong; no pages were scanned
         except AssertionError:
             pass

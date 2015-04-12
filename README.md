@@ -16,4 +16,13 @@ $ git clone https://github.com/jflesch/pyinsane.git
 $ cd pyinsane
 $ sudo python ./setup.py install
 ```
+
+### [Pillow](https://pypi.python.org/pypi/Pillow/)
+The "friendly PIL fork"
+
+To install:
+
+```
+$ sudo pip install pillow
+```
   
